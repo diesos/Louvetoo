@@ -1,21 +1,20 @@
-import { useState } from 'react'
+// import { useState } from 'react'
 import './App.css'
-import logo from "/logo.svg"
+// import logo from "/logo.svg"
+import { BrowserRouter as Router, Route} from 'react-router-dom';
+import Home from './Home'
+import Homepage from './Homepage'
 
 function App() {
 
   return (
-    <>
-    <div className="main--content">
-    <img src="./logo.svg"/>
-    <p>Adresse e-mail</p>
-    <input type="text" className="login" />
-    <p>Mot de passe</p>
-    <input type="text" className="login" />
-    <button>Connect</button>
-    </div>
-    </>
-  )
+    <Router>
+  <div>
+      <Route path="/" exact component={Home} />
+      <Route path="/Homepage" component={Homepage} />
+      </div>
+      </Router>
+  );
 }
 
 export default App

@@ -7,13 +7,17 @@ html{
   background: rgb(38,136,211);
 background: linear-gradient(180deg, rgba(38,136,211,0.19793855042016806) 77%, rgba(38,136,211,0.5760898109243697) 100%);
 height: 100%;
-padding: 30px;
 }
 .main--content{
   display:flex;
   flex-direction: column;
   max-width: 500px;
   margin: auto;
+}
+
+.main--content>p{
+  text-align: center;
+  margin: 15px;
 }
 
 input{
@@ -50,4 +54,140 @@ p{
   color: black;
   font-size: 16px;
 
+}
+
+nav{
+  display: flex;
+  justify-content: space-between;
+  padding: 0px;
+  margin: 0px;
+  background-color: #39A7FF;
+  -webkit-box-shadow: 0px 2px 49px -7px rgba(0,0,0,0.36);
+  -moz-box-shadow: 0px 2px 49px -7px rgba(0,0,0,0.36);
+  box-shadow: 0px 2px 49px -7px rgba(0,0,0,0.36);
+}
+
+nav > img{
+  width: 130px;
+}
+ul{
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  margin-right: 2em;
+}
+li{
+  font-size: 2vh;
+  list-style: none;
+  font-weight: 800;
+}
+
+.child--content{
+  display: flex;
+  max-width: 720px;
+  margin: auto;
+  justify-content: center;
+  margin-top: 2em;
+  background-color: #39A7FF;
+  width: auto;
+  -webkit-box-shadow: 0px 2px 30px -18px rgba(0,0,0,0.36);
+  -moz-box-shadow: 0px 2px 30px -18px rgba(0,0,0,0.36);
+  box-shadow: 0px 2px 30px -18px rgba(0,0,0,0.36);
+  border-radius : 15px;
+  color: white;
+  gap: 15px;
+  padding: 30px;
+
+}
+.profil-pic{
+  width: 100px;
+  height: 100px;
+  overflow:scroll;
+  border-radius: 80px;
+  text-align: center;
+}
+
+.profil-pic>img{
+  display: block;
+  height: 100%;
+  width: 100%;
+  object-fit:fill;
+  ;
+}
+
+.child--inner{
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.child--inner > .details > p {
+  color:white;
+}
+
+input {
+  display: flex;
+  text-align: center;
+  margin: auto;
+}
+
+.cards {
+  display: flex;
+  justify-content: flex-start;
+  max-width: 720px;
+  margin: auto;
+  background-color:grey;
+  border-radius: 8px;
+  gap: 15px;
+  padding: 25px;
+  margin-top: 20px;
+
+}
+.cards--inner> h3 {
+  color: #333;
+}
+
+.cards--inner{
+  display: flex;
+  justify-content: flex-start;
+  background-color: white;
+  padding: 25px;
+  border-radius: 8px;
+  width: 100%;
+  gap: 15px
+}
+.--Change{
+  background-color: rgb(115, 61, 57);
+}
+
+.--Lunch {
+  background-color: rgb(203, 203, 5);
+}
+.--Activity{
+  background-color: plum;
+}
+.--Deposit{
+  background-color: green;
+}
+
+.--Withdraw{
+  background-color: red;
+}
+.--Sleep{
+  background-color: #39A7FF;
+}
+
+.login--button{
+  background-color: #39B1E2;
+  width: fit-content;
+  padding: 15px;
+  border-radius: 15px;
+  margin: auto;
+  margin-top: 15px;
+  text-decoration: none;
+}
+
+a{
+  text-decoration: none;
+  font-weight: 600;
 }
