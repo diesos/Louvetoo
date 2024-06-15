@@ -88,6 +88,9 @@ export default function MainContent() {
 	<Cards
 		value="4"
 		/>
+	<Cards
+		value="4"
+		/>
 	</>
   );
 }
