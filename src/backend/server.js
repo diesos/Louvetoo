@@ -3,7 +3,7 @@ const app = express();
 const sequelize = require('./config/db'); // Adjust the path to your database config
 const Enfant = require('./models/Enfant');
 const Parent = require('./models/Parent');
-const Salarie = require('./models/Salarie');
+const Salarie = require('./models/user');
 const Communication = require('./models/Communication');
 const Activite = require('./models/Activite');
 
@@ -25,7 +25,7 @@ app.use('/profil', require('./routes/userRoutes')); // Adjust the path to your r
 app.use('/auth', require('./routes/authRoutes'));
 
 // Start the server on port 5001
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 3306;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });

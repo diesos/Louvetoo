@@ -12,7 +12,7 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
 // Import models
 const Enfant = require('../models/Enfant');
 const Parent = require('../models/Parent');
-const Salarie = require('../models/Salarie');
+const Salarie = require('../models/user');
 const Activite = require('../models/Activite');
 const Communication = require('../models/Communication');
 
