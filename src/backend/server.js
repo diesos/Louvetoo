@@ -1,31 +1,31 @@
 const express = require('express');
+const passport = require('passport');
+const session = require('express-session');
+const authRoutes = require('./routes/auth');
+const dashboardRoutes = require('./routes/dashboard');
+const db = require('./db.js');
+const { init: initAuth } = require('./auth');
+
 const app = express();
-const sequelize = require('./config/db'); // Adjust the path to your database config
-const Enfant = require('./models/Enfant');
-const Parent = require('./models/Parent');
-const Salarie = require('./models/user');
-const Communication = require('./models/Communication');
-const Activite = require('./models/Activite');
+const PORT = 8080;
 
-// Middleware to parse JSON bodies
-app.use(express.json());
+app.use(express.urlencoded({extended: false}));
+app.set('view engine', 'pug');
 
-// Sync all models
-sequelize.sync({
-  force: true
-});
+initAuth();
+app.use(session({
+  secret: 'secret',
+  saveUninitialized: true,
+  resave: true
+}));
 
-// Test route
-app.get('/', (req, res) => {
-  res.send('API is running...');
-});
+app.use(passport.initialize());
+app.use(passport.session());
 
-// Define other routes
-app.use('/profil', require('./routes/userRoutes')); // Adjust the path to your routes
-app.use('/auth', require('./routes/authRoutes'));
+app.use('/', authRoutes);
+app.use('/', dashboardRoutes);
 
-// Start the server on port 5001
-const PORT = process.env.PORT || 3306;
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+db.sync({ force: false })
+  .then(() => {
+    app.listen(PORT, console.log('Server is running on port: ' + PORT));
+  });
