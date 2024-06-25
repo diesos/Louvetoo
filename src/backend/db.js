@@ -1,7 +1,8 @@
-const path = require('path');
 const { Sequelize } = require('sequelize');
 
-module.exports = new Sequelize({
-  dialect: 'sqlite',
-  storage: path.join(__dirname, 'mvc_demo.sqlite')
+const sequelize = new Sequelize('my_database', 'my_user', 'My$ecureP@ssw0rd', {
+  host: 'localhost',
+  dialect: 'mysql'
 });
+
+module.exports = sequelize;
