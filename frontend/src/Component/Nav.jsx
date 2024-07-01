@@ -9,10 +9,10 @@ export default function Nav() {
             <Link to="/">
                 <img src={Logo} alt="Logo of Louvetoo" className='logoimg' />
             </Link>
-            {location.pathname !== '/' || location.pathname == '/register' && (
+            {location.pathname === '/dashboard' || location.pathname === '/child' || location.pathname === '/profil' && (
                 <ul>
                     <li>
-                        <Link to="/">Home</Link>
+                        <Link to="/dashboard">Home</Link>
                     </li>
                     <li>
                         <Link to="/child">Child</Link>

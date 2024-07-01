@@ -204,9 +204,7 @@ form > p{
   color: red;
   text-align: center;
   align-content: center;
-  margin: 10px;
   width: auto;
-  height: 50px;
   border-radius: 8px;
   font-weight: 800;
   background-color: lightsteelblue;
@@ -228,10 +226,9 @@ form > select {
 }
 
 form > input {
-  height: 50px;
+
   text-align: center;
   font-weight: 700;
-  font-size: 14px;
 }
 
 .register--success{
@@ -273,7 +270,8 @@ button[disabled] {
 }
 
 .register-div{
-  display: flex;
+  display: grid;
+  flex-direction: column;
   justify-content: center;
   margin-top: 15px;
 }
@@ -298,4 +296,26 @@ form > button{
 form > select{
   height: 20px;
   size: 20px;
+}
+
+.login-text{
+  text-align: center;
+  font-size: 14px;
+  font-weight: 800;
+  margin-top: 15px;
+  color: black;
+  background-color: transparent;
+}
+
+form > button {
+  background-color: #39A7FF;
+  color: white;
+  padding: 15px;
+  border-radius: 15px;
+  margin: auto;
+  margin-top: 15px;
+  text-decoration: none;
+}
+
+form > p {
 }

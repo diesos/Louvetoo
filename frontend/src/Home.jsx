@@ -14,8 +14,11 @@ export default function Home() {
       <div className="login--button">
         <Link to="/Homepage"><p>Connexion</p></Link>
         </div>
-        <p>Pas encore enregistrer ?
-        <Link to="/register"><p>Inscrivez-vous</p></Link></p>
+        <p>
+Vous n'avez pas encore de compte ?
+
+
+        <Link to="/register"><p>Inscrivez-vous ici</p></Link></p>
 
     </div>
   );

@@ -1,58 +1,80 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from '../api/axios';
 import { useNavigate } from 'react-router-dom';
+import logo from '/logo.svg';
+import { Link } from 'react-router-dom';
 
-const Login = () => {
+const LOGIN_URL = '/login';
+const CHECK_SESSION_URL = '/check-session';
+
+export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errMsg, setErrMsg] = useState('');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkSession = async () => {
+      try {
+        const response = await axios.get(CHECK_SESSION_URL, { withCredentials: true });
+        if (response.data.loggedIn) {
+          navigate('/dashboard');
+        }
+      } catch (err) {
+        console.error('Failed to check session:', err);
+      }
+    };
+
+    checkSession();
+  }, [navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
-      if (response.ok) {
-        navigate('/');
-      } else {
-        console.error('Login failed:', response.statusText);
+      const response = await axios.post(LOGIN_URL, { email, password }, { withCredentials: true });
+      if (response.status === 200) {
+        navigate('/dashboard');
       }
-    } catch (error) {
-      console.error('Login failed:', error);
+    } catch (err) {
+      if (!err?.response) {
+        setErrMsg('No Server Response');
+      } else if (err.response?.status === 401) {
+        setErrMsg('Invalid Credentials');
+      } else {
+        setErrMsg('Login Failed');
+      }
     }
   };
 
   return (
-    <div className="container">
-      <div className="row justify-content-center">
-        <div className="col-md-8">
-          <div className="card">
-            <div className="card-header">Login</div>
-            <div className="card-body">
-              <form onSubmit={handleSubmit}>
-                <div className="mb-3">
-                  <label className="form-label" htmlFor="email">Email</label>
-                  <input id="email" className="form-control" type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-                </div>
-                <div className="mb-3">
-                  <label className="form-label" htmlFor="password">Mot de passe</label>
-                  <input id="password" className="form-control" type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-                </div>
-                <div className="mb-3 py-3">
-                  <button className="btn btn-primary login-button" type="submit">Login</button>
-                  <a href="/register" className="ps-2">Register</a>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div className="main--content">
+      <img src={logo} alt="Logo" />
+      <form onSubmit={handleSubmit}>
+        {errMsg && <p className="errmsg">{errMsg}</p>}
+        <p className='login-text'>Adresse e-mail</p>
+        <input
+          type="text"
+          className="login"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+         <p className='login-text'>Mot de passe</p>
+        <input
+          type="password"
+          className="login"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+          <button type="submit">Connexion</button>
+          <p className='login-text'>
+          Vous n'avez pas encore de compte ?
+          <Link to="/register">
+            <p>Inscrivez-vous ici</p>
+          </Link>
+        </p>
+      </form>
     </div>
   );
-};
-
-export default Login;
+}

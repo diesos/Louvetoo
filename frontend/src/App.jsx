@@ -4,6 +4,7 @@ import Home from './Home';
 import Homepage from './Homepage.jsx';
 import Register from './Component/Register.jsx';
 import Login from './Component/Login.jsx';
+import Dashboard from './Component/Dashboard.jsx';
 
 
 
@@ -13,10 +14,12 @@ function App() {
       <div>
         <Nav /> {/* Composant Nav ajouté ici */}
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Login />} />
           <Route path="/Homepage" element={<Homepage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+
         </Routes>
       </div>
     </Router>

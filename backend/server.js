@@ -56,6 +56,14 @@ const syncDatabase = async () => {
 
 syncDatabase();
 
+app.get('/check-session', (req, res) => {
+  if (req.isAuthenticated()) {
+    res.json({ loggedIn: true });
+  } else {
+    res.json({ loggedIn: false });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port: ${PORT} or http://127.0.0.1:${PORT}`);
 });
