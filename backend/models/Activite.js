@@ -28,7 +28,8 @@ const Activite = sequelize.define('Activite', {
     allowNull: true
   }
 }, {
-  timestamps: true
+  timestamps: true,
+  tableName: 'Activites'
 });
 
 module.exports = Activite;
