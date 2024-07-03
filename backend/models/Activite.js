@@ -8,19 +8,22 @@ const Activite = sequelize.define('Activite', {
     autoIncrement: true,
     primaryKey: true
   },
-  id_enfant: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: Enfant,
-      key: 'id'
-    }
-  },
   date: {
     type: DataTypes.DATE,
     allowNull: false
   },
   duree: {
     type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  type: {
+    type: DataTypes.ENUM(
+      "Deposit",
+      "Withdraw",
+      "Lunch",
+      "Change",
+      "Activity"
+    ),
     allowNull: false
   },
   photo: {
@@ -32,4 +35,9 @@ const Activite = sequelize.define('Activite', {
   tableName: 'Activites'
 });
 
+
+//Associer les activités aux enfants
+Activite.associate = function(models) {
+  Activite.belongsToMany(models.Enfant, { through: 'EnfantActivite', foreignKey: 'id_activite', as: 'Enfants' });
+};
 module.exports = Activite;

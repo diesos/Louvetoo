@@ -13,7 +13,7 @@ module.exports = {
 	  }
 
 	  res.json({
-		message: `Welcome to your dashboard, ${req.user.name}`,
+		message: `Welcome to your dashboard, ${req.user.prenom}`,
 		user: req.user
 	  });
 	}

@@ -10,12 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "cors": "^2.8.5",
+    "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.10.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^5.3.4",
-    "sequelize": "^6.37.3",
-    "cors": "^2.8.5"
+    "sequelize": "^6.37.3"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

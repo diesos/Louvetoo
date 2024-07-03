@@ -319,3 +319,7 @@ form > button {
 
 form > p {
 }
+
+div:text {
+  color: black;
+}

@@ -220,7 +220,7 @@ const Register = () => {
         try {
             const response = await axios.post(
                 REGISTER_URL,
-                JSON.stringify({ prenom, nom, email, password, telephone, role }),
+               { prenom, nom, email, password, telephone, role },
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
@@ -252,7 +252,7 @@ const Register = () => {
         <>
             {success ? (
                 <section className="register-div">
-                    <h1 className="register--success">Enregistrement effectuée <br /><FontAwesomeIcon icon={faCheck} classname="valid"/></h1>
+                    <h1 className="register--success">Enregistrement effectuée <br /><FontAwesomeIcon icon={faCheck} className="valid"/></h1>
                     <div className="login--button">
                     <Link to="/Login">Connectez-vous dès à présent.</Link>
                     </div>

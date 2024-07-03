@@ -5,6 +5,7 @@ import Homepage from './Homepage.jsx';
 import Register from './Component/Register.jsx';
 import Login from './Component/Login.jsx';
 import Dashboard from './Component/Dashboard.jsx';
+import Profil from './Component/Profil.jsx';
 
 
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="/Homepage" element={<Homepage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/profil" element={<Profil />} />
           <Route path="/dashboard" element={<Dashboard />} />
 
         </Routes>
