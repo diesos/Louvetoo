@@ -4,6 +4,7 @@ import Home from './Home';
 import Homepage from './Homepage.jsx';
 import Register from './Component/Register.jsx';
 import Login from './Component/Login.jsx';
+import Profile from './Component/Profile.jsx';
 import Dashboard from './Component/Dashboard.jsx';
 
 
@@ -19,6 +20,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/profile" element={<Profile />} />
 
         </Routes>
       </div>

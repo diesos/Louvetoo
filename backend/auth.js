@@ -3,7 +3,7 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
-const User = require('./models/User.js');
+const User = require('./models/Users.js');
 
 
 module.exports = {
@@ -55,6 +55,7 @@ module.exports = {
 
   protectRoute: (req, res, next) => {
     if (req.isAuthenticated()) {
+      console.log(req.user)
       return next();
     }
     res.redirect('/login?next=' + req.url);

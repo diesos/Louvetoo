@@ -4,6 +4,7 @@ const passport = require('passport');
 const session = require('express-session');
 const authRoutes = require('./routes/auth');
 const dashboardRoutes = require('./routes/dashboard');
+const childrenRoutes = require('./routes/childrenRoutes');
 const db = require('./db.js');
 const cors = require('cors');
 const corsOptions = require('./config/corsOptions');
@@ -11,7 +12,7 @@ const { init: initAuth } = require('./auth');
 const path = require('path');
 
 // Models
-const User = require('./models/User');
+const User = require('./models/Users.js');
 const Enfant = require('./models/Enfant');
 const Activite = require('./models/Activite');
 
@@ -26,10 +27,13 @@ app.use(cors({
 }));
 
 app.use(express.static(path.join(__dirname, 'public')));
-app.set('views', path.join(__dirname, 'views'));
+// app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: false }));
-app.set('view engine', 'pug');
+// app.set('view engine', 'pug');
 app.use(express.json());
+
+// ROUTES
+app.use("/api/children", childrenRoutes);
 
 initAuth();
 app.use(session({
@@ -48,7 +52,7 @@ const syncDatabase = async () => {
   try {
     // Synchroniser les tables sans les forcer à être recréées
     await sequelize.sync({ force: false }); // or simply await sequelize.sync();
-    console.log('Database synchronized');
+    console.log('100% - ✅ Database synchronized');
   } catch (error) {
     console.error('Unable to synchronize the database:', error);
   }
@@ -65,5 +69,5 @@ app.get('/check-session', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running on port: ${PORT} or http://127.0.0.1:${PORT}`);
+  console.log(`✅ Server is running on port: ${PORT} or http://127.0.0.1:${PORT}`);
 });

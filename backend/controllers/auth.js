@@ -1,5 +1,5 @@
 const bcrypt = require("bcryptjs");
-const User = require("../models/User");
+const User = require("../models/Users");
 const passport = require('passport');
 
 module.exports = {
@@ -7,11 +7,11 @@ module.exports = {
     const { prenom, nom, email, password, telephone, role } = req.body;
 
     if (!prenom || !nom || !email || !password || !telephone || !role) {
-      return res.status(400).json({ error: "Please fill all fields" });
+      return res.status(400).json({ error: "Veuillez remplir tous les champs" });
     }
 
     if (await User.findOne({ where: { email } })) {
-      return res.status(400).json({ error: "A user account already exists with this email" });
+      return res.status(400).json({ error: "Un compte avec mail existe déja." });
     }
 
     await User.create({
@@ -23,17 +23,17 @@ module.exports = {
       role
     });
 
-    res.status(201).json({ message: "User registered successfully" });
+    res.status(201).json({ message: "Enregistement avec succès" });
   },
 
   loginUser: (req, res, next) => {
     passport.authenticate("local", (err, user, info) => {
       if (err) return next(err);
-      if (!user) return res.status(400).json({ error: "Email or password is incorrect" });
+      if (!user) return res.status(400).json({ error: "Mot de passe incorrect." });
 
       req.logIn(user, (err) => {
         if (err) return next(err);
-        res.status(200).json({ message: "Login successful" });
+        res.status(200).json({ message: "Connexion avec succès" });
       });
     })(req, res, next);
   },

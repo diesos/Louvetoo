@@ -13,26 +13,27 @@ export default function Login() {
   const [errMsg, setErrMsg] = useState('');
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const checkSession = async () => {
-      try {
-        const response = await axios.get(CHECK_SESSION_URL, { withCredentials: true });
-        if (response.data.loggedIn) {
-          navigate('/dashboard');
-        }
-      } catch (err) {
-        console.error('Failed to check session:', err);
-      }
-    };
+  // useEffect(() => {
+  //   const checkSession = async () => {
+  //     try {
+  //       const response = await axios.get(CHECK_SESSION_URL, { withCredentials: true });
+  //       if (response.data.loggedIn) {
+  //         navigate('/dashboard');
+  //       }
+  //     } catch (err) {
+  //       console.error('Failed to check session:', err);
+  //     }
+  //   };
 
-    checkSession();
-  }, [navigate]);
+  //   checkSession();
+  // }, [navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post(LOGIN_URL, { email, password }, { withCredentials: true });
       if (response.status === 200) {
+        console.log(response?.data);
         navigate('/dashboard');
       }
     } catch (err) {

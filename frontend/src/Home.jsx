@@ -1,7 +1,7 @@
 import logo from "/logo.svg";
 import { Link } from 'react-router-dom';
 
-console.log("Hello")
+console.log("Home.JSX")
 
 export default function Home() {
   return (

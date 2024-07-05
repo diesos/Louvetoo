@@ -47,11 +47,30 @@ export default function MainContent() {
     setDateValue((prevValue) => event.target.value);
   }
 
+  console.log("Dashboard.jsx");
+
   // For getting exact day in words and sentences
   const getCurrentDate = () =>
     `${dayOfWeek[day]}  ${date} ${
       selectMonth[month - 1]
     } ${year} il est : ${hours}:${minutes}`;
+
+    const [user, setUser] = useState(null);
+
+    const handleProfile = async (e) => {
+      if (e) e.preventDefault();
+      try {
+        const response = await axios.get("/profile", {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+        catch(error) {
+          console.error("Error fetching user profile:", error);
+        }
+      };
+    };
+    setUser(response.data);
 
   return (
     <>
