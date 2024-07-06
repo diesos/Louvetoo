@@ -5,6 +5,8 @@ const session = require('express-session');
 const authRoutes = require('./routes/auth');
 const dashboardRoutes = require('./routes/dashboard');
 const childrenRoutes = require('./routes/childrenRoutes');
+const activiteRoutes = require('./routes/activiteRoutes');
+const usersRoutes = require('./routes/usersRoutes');
 const db = require('./db.js');
 const cors = require('cors');
 const corsOptions = require('./config/corsOptions');
@@ -34,6 +36,8 @@ app.use(express.json());
 
 // ROUTES
 app.use("/api/children", childrenRoutes);
+app.use("/api/users", usersRoutes);
+app.use("/api/activites", activiteRoutes);
 
 initAuth();
 app.use(session({

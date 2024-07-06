@@ -86,5 +86,24 @@ const updateChild = async (req, res) => {
 	}
   }
 
+const deleteChild = async (req, res) => {
+	const { id } = req.params;
+	try {
+	  const child = await Enfant.findOne({ where: { id } });
+	  if (!child) {
+		return res.status(404).json({ error: "Child not found" });
+	  }
+	  await child.destroy();
+	  res.status(200).send({
+		succes: true,
+		message: "Child deleted",
+		data: child
+	  });
+	} catch (error) {
+	  res.status(500).json({ error: error.message });
+	}
+  }
 
-module.exports = { getAllChildren, getChild, addChild, updateChild};
+
+
+module.exports = { getAllChildren, getChild, addChild, updateChild, deleteChild};

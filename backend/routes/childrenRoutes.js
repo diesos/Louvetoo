@@ -4,7 +4,8 @@ const {
 	getAllChildren,
 	getChild,
 	addChild,
-	updateChild } = require('../controllers/childrenController');
+	updateChild,
+	deleteChild} = require('../controllers/childrenController');
 
 // GET ROUTES for children
 // GET all children
@@ -20,5 +21,9 @@ router.post('/addchild', addChild);
 //PUT ROUTES for children
 //PUT a child
 router.put('/updatechild/:id', updateChild);
+
+// DELETE ROUTES for children
+// DELETE a child
+router.delete('/deletechild/:id', deleteChild);
 
 module.exports = router;
