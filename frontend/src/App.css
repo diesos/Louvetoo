@@ -319,3 +319,22 @@ form > button {
 
 form > p {
 }
+
+.red{
+  background-color: red;
+}
+.yellow{
+  background-color: yellow;
+}
+.green{
+  background-color: green;
+}
+.blue{
+  background-color: blue;
+}
+.pink{
+  background-color: pink;
+}
+.purple{
+  background-color: purple;
+}

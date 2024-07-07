@@ -42,14 +42,16 @@ const getActivite = async (req, res) => {
 }
 
 const addActivite = async (req, res) => {
-	const { id , id_enfant, date, duree, photo} = req.body;
+	const { id, id_enfant, date, duree, photo, activity, autres } = req.body;
 	try {
 	  const activite = await Activite.create({
 		id,
 		id_enfant,
 		date,
 		duree,
-		photo
+		photo,
+		activity,
+		autres
 	  });
 	  res.status(201).send({
 		succes: true,
@@ -59,24 +61,27 @@ const addActivite = async (req, res) => {
 	} catch (error) {
 	  res.status(400).json({ error: error.message });
 	}
-}
+  }
 
-const updateActivite = async (req, res) => {
+
+  const updateActivite = async (req, res) => {
 	const { id } = req.params;
-	const { id_enfant, date, duree, photo } = req.body;
+	const { id_enfant, date, duree, photo, activity, autres } = req.body;
 	try {
 	  const activite = await Activite.findOne({ where: { id } });
 	  if (!activite) {
 		return res.status(404).json({
-			succes: false,
-			error: "Activity not found"
-			});
+		  succes: false,
+		  error: "Activity not found"
+		});
 	  }
 	  await activite.update({
 		id_enfant,
 		date,
 		duree,
-		photo
+		photo,
+		activity,
+		autres
 	  });
 	  res.status(200).send({
 		succes: true,
@@ -86,7 +91,8 @@ const updateActivite = async (req, res) => {
 	} catch (error) {
 	  res.status(500).json({ error: error.message });
 	}
-}
+  }
+
 
 const deleteActivite = async (req, res) => {
 	const { id } = req.params;

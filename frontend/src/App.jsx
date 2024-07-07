@@ -1,11 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Nav from './Component/Nav.jsx';
-import Home from './Home';
 import Homepage from './Homepage.jsx';
 import Register from './Component/Register.jsx';
 import Login from './Component/Login.jsx';
-import Profile from './Component/Profile.jsx';
 import Dashboard from './Component/Dashboard.jsx';
+import Admindashboard from './Component/Admindashboard.jsx';
+import AdminUsers from './pages/Admin/AdminUsers';
+import AdminChild from './pages/Admin/AdminChild';
+import AdminActivite from './pages/Admin/AdminActivite';
 
 
 
@@ -20,7 +22,11 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/admindashboard" element={<Admindashboard />} />
+          <Route path="/adminusers" element={<AdminUsers />} />
+          <Route path="/adminchild" element={<AdminChild />} />
+          <Route path="/adminactivite" element={<AdminActivite />} />
+
 
         </Routes>
       </div>

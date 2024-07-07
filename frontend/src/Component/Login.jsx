@@ -76,6 +76,9 @@ export default function Login() {
           </Link>
         </p>
       </form>
+      <footer>
+      <Link to="/Admindashboard"><p style={{textAlign: 'center'}}>Admin</p></Link>
+      </footer>
     </div>
   );
 }

@@ -57,20 +57,23 @@ export default function MainContent() {
 
     const [user, setUser] = useState(null);
 
-    const handleProfile = async (e) => {
-      if (e) e.preventDefault();
-      try {
-        const response = await axios.get("/profile", {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
-        catch(error) {
-          console.error("Error fetching user profile:", error);
-        }
-      };
-    };
-    setUser(response.data);
+    // const handleProfile = async (e) => {
+    //   if (e) e.preventDefault();
+    //   try {
+    //     const response = await axios.get("/api/getuser/{id}", {
+    //       headers: {
+    //         Authorization: `Bearer ${localStorage.getItem("token")}`,
+    //       },
+    //     });
+    //     catch(error) {
+    //       console.error("Error fetching user profile:", error);
+    //     }
+    //     finally {
+    //       console.log("Finally");
+    //     }
+    //   };
+    //   }
+    // setUser(response.data);
 
   return (
     <>
